@@ -1,5 +1,5 @@
 """
-Level 3 MONOLITHIC: Official Tennis Score Display
+Level 2 MONOLITHIC: Official Tennis Score Display
 ==================================================
 
 Monolithic version with official tennis terminology.
