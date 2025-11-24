@@ -71,8 +71,11 @@ if __name__ == "__main__":
     # Play first game
     print("=== Game 1 ===")
     game.score_point("Alice")
+    game.print_score()
     game.score_point("Alice")
+    game.print_score()
     game.score_point("Alice")
+    game.print_score()
     game.score_point("Alice")
     game.print_score()
 
@@ -80,7 +83,10 @@ if __name__ == "__main__":
     print("\n=== Game 2 ===")
     game.reset_game()
     game.score_point("Bob")
+    game.print_score()
     game.score_point("Bob")
+    game.print_score()
     game.score_point("Bob")
+    game.print_score()
     game.score_point("Bob")
     game.print_score()
