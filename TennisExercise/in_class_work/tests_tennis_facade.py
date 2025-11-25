@@ -1,5 +1,6 @@
+# tests_tennis_facade.py
 import unittest
-from tennis_facade import Tennis
+from .tennis_facade import Tennis
 
 class TestTennis(unittest.TestCase):
 
