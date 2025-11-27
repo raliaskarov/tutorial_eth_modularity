@@ -74,14 +74,60 @@ class AlertSystem:
     def update(self, temperature, humidity, pressure):
         if temperature < self._temp_min:
             print(f"Cold Alert: {temperature:.1f}C")
-        elif temperature < self._temp_max:
+        elif temperature > self._temp_max:
             print(f"Heat Alert: {temperature:.1f}C")
         if pressure < self._pressure_min:
             print(f"Low pressure alert: {pressure}")
         if humidity > self._hum_max:
             print(f"High humidity alert: {humidity}")
         
-        
+class StatisticsDisplay:
+
+    def __init__(self, weather_station):
+        self._temperature_readings = []
+        self._humidity_readings = []
+        self._pressure_readings = []
+        weather_station.register_observer(self)
+
+    def update(self, templature, humidity, pressure):
+        # receive recent readings
+        self._temperature_readings.append(templature)
+        self._humidity_readings.append(humidity)
+        self._pressure_readings.append(pressure)
+
+        # remove first value from list if more than 100 records
+        if len(self._temperature_readings) > 100:
+            self._temperature_readings.pop(0)
+            self._humidity_readings.pop(0)
+            self._pressure_readings.pop(0)
+
+        self.display()
+
+    def display(self):
+        if len(self._temperature_readings) < 2:
+            print("Insufficient records - not showing statistics")
+            return
+
+        min_temp = min(self._temperature_readings)
+        max_temp = max(self._temperature_readings)
+        avg_temp = sum(self._temperature_readings) / len(self._temperature_readings)
+
+        min_hum = min(self._humidity_readings)
+        max_hum = max(self._humidity_readings)
+        avg_hum = sum(self._humidity_readings) / len(self._humidity_readings)
+
+        min_pres = min(self._pressure_readings)
+        max_pres = max(self._pressure_readings)
+        avg_pres = sum(self._pressure_readings) / len(self._pressure_readings)
+
+        print(
+            f"Statistics\n"
+            f"Temperature  - min {min_temp} - avg {avg_temp:.1f} - max {max_temp}\n"
+            f"Humidity     - min {min_hum} - avg {avg_hum:.1f} - max {max_hum}\n"
+            f"Pressure     - min {min_pres} - avg {avg_pres:.1f} - max {max_pres}\n"  
+              )
+    
+
 
 if __name__ == "__main__":
     # Create weather station
@@ -90,6 +136,7 @@ if __name__ == "__main__":
     # Create and register display
     current_display = CurrentConditionsDisplay(weather_station)
     alert_sytem = AlertSystem(weather_station)
+    stats_display = StatisticsDisplay(weather_station)
 
     # Simulate weather updates
     print("=== Weather Station Starting ===\n")
