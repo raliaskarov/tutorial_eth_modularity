@@ -122,13 +122,13 @@ class StatisticsDisplay:
 
 class WeatherForecast():
 
-    def __init__(self, weather_station: WeatherStation, statistics: StatisticsDisplay):
+    def __init__(self, weather_station: WeatherStation):
 
         self._forecast: str = None
         self._pressure_readings: list = []
         weather_station.register_observer(self)
 
-    def update(self, pressure):
+    def update(self, temperature, humidity, pressure):
         self._pressure_readings.append(pressure)
         if len(self._pressure_readings) > 3:
             self._pressure_readings.pop(0)
@@ -137,12 +137,13 @@ class WeatherForecast():
 
     def display(self):
         last = self._pressure_readings
+        print(f"Last 3 pressure measurements {last}")
         if len(last) < 3:
             self._forecast = "Insufficient data"
-        elif last[0] < last[1] < last [3]:
+        elif last[0] > last[1] > last [2]:
             self._forecast = "Deteriorating weather"
-        elif last[0] > last[2] < last [3]:
-            self_forecast = "Improving weather"
+        elif last[0] < last[1] < last [2]:
+            self.forecast = "Improving weather"
         else:
             self._forecast = "Stable conditions"
         print(f"Weather forecast: {self._forecast}")
