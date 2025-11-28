@@ -1,12 +1,4 @@
-"""
-Level 1 MODULAR: Single Observer (Observer Pattern Introduction)
-=================================================================
-
-Introduction to Observer pattern with a simple weather station and one display.
-- WeatherStation notifies observers when data changes
-- CurrentConditionsDisplay observes weather changes
-- No abstract classes - using duck typing
-"""
+# Solved
 
 
 class WeatherStation:
@@ -128,6 +120,34 @@ class StatisticsDisplay:
               )
     
 
+class WeatherForecast():
+
+    def __init__(self, weather_station: WeatherStation, statistics: StatisticsDisplay):
+
+        self._forecast: str = None
+        self._pressure_readings: list = []
+        weather_station.register_observer(self)
+
+    def update(self, pressure):
+        self._pressure_readings.append(pressure)
+        if len(self._pressure_readings) > 3:
+            self._pressure_readings.pop(0)
+
+        self.display()
+
+    def display(self):
+        last = self._pressure_readings
+        if len(last) < 3:
+            self._forecast = "Insufficient data"
+        elif last[0] < last[1] < last [3]:
+            self._forecast = "Deteriorating weather"
+        elif last[0] > last[2] < last [3]:
+            self_forecast = "Improving weather"
+        else:
+            self._forecast = "Stable conditions"
+        print(f"Weather forecast: {self._forecast}")
+
+
 
 if __name__ == "__main__":
     # Create weather station
@@ -137,6 +157,7 @@ if __name__ == "__main__":
     current_display = CurrentConditionsDisplay(weather_station)
     alert_sytem = AlertSystem(weather_station)
     stats_display = StatisticsDisplay(weather_station)
+    forecast_module = WeatherForecast(weather_station)
 
     # Simulate weather updates
     print("=== Weather Station Starting ===\n")
