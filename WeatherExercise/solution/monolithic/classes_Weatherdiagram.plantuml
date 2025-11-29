@@ -1,0 +1,18 @@
+@startuml classes_Weatherdiagram
+set namespaceSeparator none
+class "WeatherStation" as level3_statistics_mono.WeatherStation {
+  humidity : float
+  humidity_readings : list
+  pressure : float
+  pressure_min : float
+  temp_max : float
+  temp_min : float
+  temp_readings : list
+  temperature : float
+  __init__()
+  _check_alerts()
+  _display_current()
+  _display_statistics()
+  set_measurements(temperature, humidity, pressure)
+}
+@enduml

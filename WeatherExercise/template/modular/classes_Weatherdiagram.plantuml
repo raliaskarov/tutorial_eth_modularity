@@ -1,0 +1,38 @@
+@startuml classes_Weatherdiagram
+set namespaceSeparator none
+class "AlertSystem" as level4_single_observer_modular.AlertSystem {
+  _hum_max : int
+  _pressure_min : float
+  _temp_max : float
+  _temp_min : float
+  __init__(weather_station, temp_min, temp_max, pressure_min, hum_max)
+  update(temperature, humidity, pressure)
+}
+class "CurrentConditionsDisplay" as level4_single_observer_modular.CurrentConditionsDisplay {
+  _humidity : float
+  _pressure : float
+  _temperature : float
+  __init__(weather_station)
+  display()
+  update(temperature, humidity, pressure)
+}
+class "StatisticsDisplay" as level4_single_observer_modular.StatisticsDisplay {
+  _humidity_readings : list
+  _pressure_readings : list
+  _temperature_readings : list
+  __init__(weather_station)
+  display()
+  update(templature, humidity, pressure)
+}
+class "WeatherStation" as level4_single_observer_modular.WeatherStation {
+  _humidity : float
+  _observers : list
+  _pressure : float
+  _temperature : float
+  __init__()
+  notify_observers()
+  register_observer(observer)
+  remove_observer(observer)
+  set_measurements(temperature, humidity, pressure)
+}
+@enduml
