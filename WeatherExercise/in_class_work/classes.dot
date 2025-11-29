@@ -1,0 +1,5 @@
+digraph "classes" {
+rankdir=BT
+charset="utf-8"
+"weather_mono.WeatherStation" [color="black", fontcolor="black", label=<{WeatherStation|humidity : int<br ALIGN="LEFT"/>humidity_avg : int<br ALIGN="LEFT"/>humidity_max : int<br ALIGN="LEFT"/>humidity_min : int<br ALIGN="LEFT"/>humidity_readings : list<br ALIGN="LEFT"/>pressure : int<br ALIGN="LEFT"/>pressure_readings : list<br ALIGN="LEFT"/>temperature : int<br ALIGN="LEFT"/>temperature_avg : int<br ALIGN="LEFT"/>temperature_max : int<br ALIGN="LEFT"/>temperature_min : int<br ALIGN="LEFT"/>temperature_readings : list<br ALIGN="LEFT"/>|record_measurement(t, h, p)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+}

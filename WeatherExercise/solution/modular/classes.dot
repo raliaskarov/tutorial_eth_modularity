@@ -1,0 +1,9 @@
+digraph "classes" {
+rankdir=BT
+charset="utf-8"
+"level4_forecast_modular.AlertSystem" [color="black", fontcolor="black", label=<{AlertSystem|_pressure_min : float<br ALIGN="LEFT"/>_temp_max : float<br ALIGN="LEFT"/>_temp_min : float<br ALIGN="LEFT"/>|__init__(weather_station, temp_min, temp_max, pressure_min)<br ALIGN="LEFT"/>update(temperature, humidity, pressure)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"level4_forecast_modular.CurrentConditionsDisplay" [color="black", fontcolor="black", label=<{CurrentConditionsDisplay|_humidity : float<br ALIGN="LEFT"/>_pressure : float<br ALIGN="LEFT"/>_temperature : float<br ALIGN="LEFT"/>|__init__(weather_station)<br ALIGN="LEFT"/>display()<br ALIGN="LEFT"/>update(temperature, humidity, pressure)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"level4_forecast_modular.ForecastDisplay" [color="black", fontcolor="black", label=<{ForecastDisplay|_pressure_readings : list<br ALIGN="LEFT"/>|__init__(weather_station)<br ALIGN="LEFT"/>display()<br ALIGN="LEFT"/>update(temperature, humidity, pressure)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"level4_forecast_modular.StatisticsDisplay" [color="black", fontcolor="black", label=<{StatisticsDisplay|_humidity_readings : list<br ALIGN="LEFT"/>_temp_readings : list<br ALIGN="LEFT"/>|__init__(weather_station)<br ALIGN="LEFT"/>display()<br ALIGN="LEFT"/>update(temperature, humidity, pressure)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"level4_forecast_modular.WeatherStation" [color="black", fontcolor="black", label=<{WeatherStation|_humidity : float<br ALIGN="LEFT"/>_observers : list<br ALIGN="LEFT"/>_pressure : float<br ALIGN="LEFT"/>_temperature : float<br ALIGN="LEFT"/>|__init__()<br ALIGN="LEFT"/>notify_observers()<br ALIGN="LEFT"/>register_observer(observer)<br ALIGN="LEFT"/>remove_observer(observer)<br ALIGN="LEFT"/>set_measurements(temperature, humidity, pressure)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+}
